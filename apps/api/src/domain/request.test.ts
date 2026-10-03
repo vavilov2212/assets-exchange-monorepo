@@ -1,5 +1,6 @@
 import { createRequest, type CreateRequestInput } from './request';
-import type { Client } from './types';
+import { DomainError, type Client } from './types';
+import { Asset } from '@otc/contracts';
 
 // Test builder: тест описывает только то, что для него важно,
 // остальное — валидные значения по умолчанию.
@@ -19,9 +20,12 @@ function validInput(overrides: Partial<CreateRequestInput> = {}): CreateRequestI
   };
 }
 
+function expectDomainError(fn: () => unknown, code: string) {
+  expect(fn).toThrow(DomainError);
+  expect(fn).toThrow(expect.objectContaining({code}))
+}
+
 describe('createRequest', () => {
-  // ЦИКЛ 1 — RED (уже написан). Запусти `npm test`, убедись, что падает
-  // именно с "Not implemented", потом сделай GREEN.
   it('создаёт заявку в статусе «поиск исполнителя», привязанную к клиенту', () => {
     const request = createRequest(validInput());
 
@@ -37,8 +41,19 @@ describe('createRequest', () => {
     });
   });
 
-  // Список следующих тестов (test list по Кенту Беку).
-  // Превращаем по одному `it.todo` в `it` — только после того, как предыдущий зелёный.
-  it.todo('бросает DomainError AMOUNT_NOT_POSITIVE, если amount <= 0');
-  it.todo('бросает DomainError SAME_ASSETS, если asset === quoteAsset');
+  it('бросает DomainError AMOUNT_NOT_POSITIVE, если amount <= 0', () => {
+    expectDomainError(
+      () => createRequest(validInput({amount: -10})),
+      'AMOUNT_NOT_POSITIVE'
+    );
+
+  });
+
+  it('бросает DomainError SAME_ASSETS, если asset === quoteAsset', () => {
+    const validInputOverrides = {asset: Asset.USD, quoteAsset: Asset.USD};
+    expectDomainError(
+      () => createRequest(validInput(validInputOverrides)),
+      'SAME_ASSETS'
+    );
+  });
 });

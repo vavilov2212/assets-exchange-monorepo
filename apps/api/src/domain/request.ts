@@ -1,4 +1,5 @@
-import type { Client, OtcRequest, RequestSide, Asset } from './types';
+import { type Client, type OtcRequest, type RequestSide, type Asset, DomainError } from './types';
+import { RequestStatus } from '@otc/contracts';
 
 export interface CreateRequestInput {
   id: string;
@@ -10,7 +11,18 @@ export interface CreateRequestInput {
   now: Date;
 }
 
-// GREEN-шаг — твой. Напиши минимум кода, чтобы тест прошёл, не больше.
-export function createRequest(_input: CreateRequestInput): OtcRequest {
-  throw new Error('Not implemented');
+export function createRequest(input: CreateRequestInput): OtcRequest {
+  if (input.asset === input.quoteAsset) throw new DomainError('SAME_ASSETS');
+  if (input.amount <= 0) throw new DomainError('AMOUNT_NOT_POSITIVE');
+  
+  return {
+    id: input.id,
+    clientId: input.client.id,
+    side: input.side,
+    asset: input.asset,
+    quoteAsset: input.quoteAsset,
+    amount: input.amount,
+    status: RequestStatus.SEARCHING_EXECUTOR,
+    createdAt: input.now
+  }
 }
