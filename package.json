@@ -1,0 +1,28 @@
+{
+  "name": "otc",
+  "version": "0.0.1-dev.28",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write .",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.0.11",
+    "prettier": "^3.0.3",
+    "turbo": "^2.5.0"
+  },
+  "packageManager": "npm@10.2.4",
+  "engines": {
+    "node": ">=20.11"
+  }
+}
