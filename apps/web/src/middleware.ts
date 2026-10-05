@@ -1,27 +1,17 @@
 import { NextRequestWithAuth, withAuth } from 'next-auth/middleware';
-import { /*NextRequest,*/ NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { resolveAuthRedirect } from './lib/authRedirect';
 
-// `withAuth` augments your `Request` with the user's token.
-export default withAuth(
-  (req: NextRequestWithAuth) => {
-    console.log('req.nextauth', req.nextauth);
-    console.log('----- middleware middleware func ------ \n');
+export default
+  (req: NextRequest) => {
 
-    if (!req.nextauth.token && !['/signin', '/signup'].includes(req.nextUrl.pathname)) {
-      return NextResponse.redirect(new URL('/signin', req.url));
-    }
-    if (req.nextauth.token && ['/signin', '/signup'].includes(req.nextUrl.pathname)) {
-      return NextResponse.redirect(new URL('/', req.url));
-    }
+    console.log(`----- middleware ${req.nextUrl.pathname} ------ \n`);
+
+    resolveAuthRedirect(req.nextUrl.pathname, !!req.cookies.get('SESSION_ID'));
 
     return NextResponse.next();
-  },
-  {
-    callbacks: {
-      authorized: (/*{ token }*/) => true,
-    },
   }
-);
+;
 
 export const config = {
   /**
