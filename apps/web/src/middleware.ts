@@ -1,4 +1,3 @@
-import { NextRequestWithAuth, withAuth } from 'next-auth/middleware';
 import { NextRequest, NextResponse } from 'next/server';
 import { resolveAuthRedirect } from './lib/authRedirect';
 
@@ -7,9 +6,10 @@ export default
 
     console.log(`----- middleware ${req.nextUrl.pathname} ------ \n`);
 
-    resolveAuthRedirect(req.nextUrl.pathname, !!req.cookies.get('SESSION_ID'));
+    if (!resolveAuthRedirect(req.nextUrl.pathname, !!req.cookies.get('SESSION_ID'))) {
+      return NextResponse.next();
+    }
 
-    return NextResponse.next();
   }
 ;
 

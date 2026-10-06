@@ -1,5 +1,5 @@
 {
-  "name": "@otc/api",
+  "name": "@assets-exchange-monorepo/api",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,7 +11,7 @@
     "dev": "tsx watch src/server.ts"
   },
   "dependencies": {
-    "@otc/contracts": "*",
+    "@assets-exchange-monorepo/contracts": "*",
     "express": "^5.2.1",
     "zod": "^3.22.4"
   },

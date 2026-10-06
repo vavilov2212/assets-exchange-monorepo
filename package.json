@@ -1,5 +1,5 @@
 {
-  "name": "otc",
+  "name": "assets-exchange-monorepo",
   "version": "0.0.1-dev.28",
   "private": true,
   "workspaces": [
