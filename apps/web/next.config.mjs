@@ -12,7 +12,7 @@ export default withBundleAnalyzer({
   reactStrictMode: false,
   output: 'standalone',
   // Пакеты монорепо отдаются исходниками (TS) — Next должен их транспилировать
-  transpilePackages: ['@otc/contracts'],
+  transpilePackages: ['@assets-exchange-monorepo/contracts'],
   eslint: {
     ignoreDuringBuilds: true,
   },

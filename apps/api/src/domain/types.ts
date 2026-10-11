@@ -1,10 +1,10 @@
 // Доменная модель api. Перечисления (роли, активы, статусы) берём из общего пакета
-// @otc/contracts — это единый источник правды для web и api.
+// @assets-exchange-monorepo/contracts — это единый источник правды для web и api.
 // Сами сущности — доменные (Date вместо ISO-строк, параметры исполнителя и т.д.).
-import type { Asset, OfferStatus, RequestSide, RequestStatus } from '@otc/contracts';
-import { AssetSchema } from '@otc/contracts';
+import type { Asset, OfferStatus, RequestSide, RequestStatus } from '@assets-exchange-monorepo/contracts';
+import { AssetSchema } from '@assets-exchange-monorepo/contracts';
 
-export type { Asset, OfferStatus, RequestSide, RequestStatus, Role } from '@otc/contracts';
+export type { Asset, OfferStatus, RequestSide, RequestStatus, Role } from '@assets-exchange-monorepo/contracts';
 
 export const SUPPORTED_ASSETS: readonly Asset[] = AssetSchema.options;
 

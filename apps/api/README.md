@@ -1,11 +1,11 @@
-# @otc/api — TDD-бэкенд для OTC-площадки
+# @assets-exchange-monorepo/api — TDD-бэкенд для OTC-площадки
 
-Express 5 + TypeScript + Vitest + supertest. Node 20. Общие enum'ы и DTO — из `@otc/contracts`.
+Express 5 + TypeScript + Vitest + supertest. Node 20. Общие enum'ы и DTO — из `@assets-exchange-monorepo/contracts`.
 
 ```bash
 # из корня монорепо
 npm install
-npx turbo run test:watch --filter=@otc/api
+npx turbo run test:watch --filter=@assets-exchange-monorepo/api
 # или: cd apps/api && npm run test:watch — держи открытым всё время работы
 ```
 
@@ -55,7 +55,7 @@ npx turbo run test:watch --filter=@otc/api
 
 - [ ] 19. `createApp(deps)` — фабрика, зависимости передаются снаружи (так тесты не трогают реальную БД)
 - [ ] 20. `POST /requests` → 201 + тело заявки
-- [ ] 21. невалидное тело → 400 (`CreateRequestBodySchema` из `@otc/contracts`), формат ошибки единый
+- [ ] 21. невалидное тело → 400 (`CreateRequestBodySchema` из `@assets-exchange-monorepo/contracts`), формат ошибки единый
 - [ ] 22. без токена → 401; EXECUTOR создаёт заявку → 403 (auth-middleware, токен пока фейковый `Bearer <userId>`)
 - [ ] 23. `DomainError` маппится в 409/422 в error-middleware
 - [ ] 24. `POST /requests/:id/offers`, `POST /offers/:id/accept`

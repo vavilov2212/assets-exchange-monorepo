@@ -1,5 +1,5 @@
-# Сборка apps/web из монорепо. turbo prune оставляет только @otc/web и его
-# внутренние зависимости (@otc/contracts) + урезанный package-lock.json.
+# Сборка apps/web из монорепо. turbo prune оставляет только @assets-exchange-monorepo/web и его
+# внутренние зависимости (@assets-exchange-monorepo/contracts) + урезанный package-lock.json.
 FROM dockreg.ofbox.ru/devops/node:20.11 AS base
 RUN apk add --no-cache libc6-compat
 
@@ -7,7 +7,7 @@ RUN apk add --no-cache libc6-compat
 FROM base AS pruner
 WORKDIR /app
 COPY . .
-RUN npx --yes turbo@^2 prune @otc/web --docker
+RUN npx --yes turbo@^2 prune @assets-exchange-monorepo/web --docker
 
 # 2. Install: сначала только package.json-ы и lock — слой кешируется, пока не менялись зависимости
 FROM base AS builder
@@ -16,7 +16,7 @@ COPY --from=pruner /app/out/json/ .
 RUN npm ci
 COPY --from=pruner /app/out/full/ .
 ENV NEXT_TELEMETRY_DISABLED 1
-RUN npx turbo run build --filter=@otc/web
+RUN npx turbo run build --filter=@assets-exchange-monorepo/web
 
 # 3. Runtime: только standalone-сборка Next
 FROM base AS runner

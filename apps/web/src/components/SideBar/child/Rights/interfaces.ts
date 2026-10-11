@@ -1,4 +1,4 @@
-import { Role } from '@otc/contracts';
+import { Role } from '@assets-exchange-monorepo/contracts';
 
 // Роли — из общего пакета контрактов (единый источник правды для web и api).
 // Раньше здесь был числовой enum (CLIENT = 0, EXECUTOR = 1); теперь значения строковые.

@@ -1,6 +1,6 @@
 import { createRequest, type CreateRequestInput } from './request';
 import { DomainError, type Client } from './types';
-import { Asset } from '@otc/contracts';
+import { Asset } from '@assets-exchange-monorepo/contracts';
 
 // Test builder: тест описывает только то, что для него важно,
 // остальное — валидные значения по умолчанию.

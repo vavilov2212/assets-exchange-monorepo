@@ -1,5 +1,5 @@
 import { type Client, type OtcRequest, type RequestSide, type Asset, DomainError } from './types';
-import { RequestStatus } from '@otc/contracts';
+import { RequestStatus } from '@assets-exchange-monorepo/contracts';
 
 export interface CreateRequestInput {
   id: string;
