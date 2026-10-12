@@ -16,3 +16,4 @@ describe('resolveAuthRedirect', () => {
     expect(resolveAuthRedirect(pathname, hasSession)).toBe(expected);
   });
 });
+
