@@ -9,7 +9,7 @@ export default
     const redirectUrl = resolveAuthRedirect(req.nextUrl.pathname, !!req.cookies.get('SESSION_ID'));
 
     if (redirectUrl) {
-      return NextResponse.rewrite(new URL(redirectUrl, req.url));
+      return NextResponse.redirect(new URL(redirectUrl, req.url));
     }
 
     return NextResponse.next();
