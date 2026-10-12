@@ -6,10 +6,13 @@ export default
 
     console.log(`----- middleware ${req.nextUrl.pathname} ------ \n`);
 
-    if (!resolveAuthRedirect(req.nextUrl.pathname, !!req.cookies.get('SESSION_ID'))) {
-      return NextResponse.next();
+    const redirectUrl = resolveAuthRedirect(req.nextUrl.pathname, !!req.cookies.get('SESSION_ID'));
+
+    if (redirectUrl) {
+      return NextResponse.rewrite(new URL(redirectUrl, req.url));
     }
 
+    return NextResponse.next();
   }
 ;
 

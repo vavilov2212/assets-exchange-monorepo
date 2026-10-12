@@ -13,6 +13,7 @@ export const metadata = {
   description: 'OTC admin service.',
 };
 
+// eslint-disable-next-line
 export default async function RootLayout({ children }: { children: any }) {
   return (
     <html lang="en">
