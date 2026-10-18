@@ -12,6 +12,9 @@ describe('resolveAuthRedirect', () => {
     ['/signin', true, '/'],
     ['/signup', true, '/'],
     ['/password-recovery', true, '/'],
+    ['/password-recovery/confirm', false, null],
+    ['/signin/', false, null],
+    ['/signin/', true, '/']
   ])('%s, session=%s -> %s', (pathname, hasSession, expected) => {
     expect(resolveAuthRedirect(pathname, hasSession)).toBe(expected);
   });
