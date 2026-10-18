@@ -33,7 +33,12 @@ describe('resolveAuthRedirect', () => {
      */
     ['/', true, null],
     ['/password-recovery/confirm', false, null],
-
+    ['/sign', false, '/signin'],
+    ['/s', false, '/signin'],
+    ['/recovery', false, '/signin'],
+    ['/signinfoo', false, '/signin'],
+    ['/dashboard/settings', false, '/signin'],
+    
   ])('%s, session=%s -> %s', (pathname, hasSession, expected) => {
         console.log('### pathname.split(\'/\')', pathname.split('/'))
 
