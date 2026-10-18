@@ -32,17 +32,15 @@ describe('resolveAuthRedirect', () => {
     ['/recovery', false, '/signin'],
     ['/signinfoo', false, '/signin'],
     ['/dashboard/settings', false, '/signin'],
+    ['/password-recovery/confirm', false, null],
 
     /**
      * HAS SESSION | PRIVATE PATH
      */
     ['/', true, null],
-    ['/password-recovery/confirm', false, null],
     
-  ])('%s, session=%s -> %s', (pathname, hasSession, expected) => {
-        console.log('### pathname.split(\'/\')', pathname.split('/'))
-
-    expect(resolveAuthRedirect(pathname, hasSession)).toBe(expected);
-  });
+  ])('%s, session=%s -> %s', (pathname, hasSession, expected) =>
+    expect(resolveAuthRedirect(pathname, hasSession)).toBe(expected)
+  );
 });
 
