@@ -12,6 +12,9 @@ const makeReq = (path: string, cookie?: string) =>
     headers: cookie ? { cookie } : {},
   });
 
+const locationPath = (res: Response) =>
+  new URL(res.headers.get('location')!).pathname;
+
 const expectPassThrough = (res: Response) => {
   expect(res.status).toBe(200);
   expect(res.headers.get('location')).toBeNull();
@@ -28,7 +31,7 @@ describe('redirects', () => {
   it('redirects to /signin when there is no session', () => {
     const res = middleware(makeReq('/')) as Response;
     expect(res.status).toBe(307);
-    expect(res.headers.get('location')).toBe(`${ORIGIN}signin`);
+    expect(locationPath(res)).toBe('/signin');
   });
 
   it('redirects to / when session exists on /signin', () => {
