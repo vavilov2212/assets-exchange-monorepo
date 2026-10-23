@@ -1,30 +1,31 @@
 {
+  "extends": "@assets-exchange-monorepo/tsconfig/base.json",
   "compilerOptions": {
-    "types": ["node"],
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
+    "outDir": "./build/",
+    "sourceMap": true,
     "jsx": "preserve",
-    "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "*": ["src/*"],
+      "@shared/*": ["src/_shared/*"],
+      "@features/*": ["src/_features/*"],
+      "@entities/*": ["src/_entities/*"],
+      "@widgets/*": ["src/_widgets/*"],
+      "@app/*": ["src/_app/*"],
+      "@pages/*": ["src/_pages/*"]
     },
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
+    "rootDir": "."
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "./src",
+    ".next/types/**/*.ts",
+    "src/shared/types/global.d.ts",
+    "src/shared/types/next-env-extension.d.ts"
+  ],
+  "exclude": ["./src/**/__tests__/*", ".next"]
 }

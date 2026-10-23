@@ -1,0 +1,23 @@
+{
+  "extends": "@assets-exchange-monorepo/tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@assets-exchange-monorepo/style-variables": ["../../libs/style-variables/src/index"],
+      "@assets-exchange-monorepo/icons": ["../../libs/icons/src/index"],
+      "@assets-exchange-monorepo/shared-lib/*": ["../../libs/shared-lib/src/*"]
+    }
+    // "types": ["@testing-library/jest-dom/vitest"]
+  },
+  "include": [
+    ".eslintrc.*",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.mts",
+    "**/*.js",
+    "**/*.cjs",
+    "**/*.mjs",
+    "**/*.jsx",
+    "**/*.json"
+  ]
+}
