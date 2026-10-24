@@ -3,7 +3,6 @@
   "compilerOptions": {
     "outDir": "./build/",
     "sourceMap": true,
-    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
       "*": ["src/*"],
@@ -14,18 +13,11 @@
       "@app/*": ["src/_app/*"],
       "@pages/*": ["src/_pages/*"]
     },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
     "rootDir": "."
   },
   "include": [
     "./src",
     ".next/types/**/*.ts",
-    "src/shared/types/global.d.ts",
-    "src/shared/types/next-env-extension.d.ts"
   ],
   "exclude": ["./src/**/__tests__/*", ".next"]
 }
