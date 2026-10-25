@@ -1,6 +1,6 @@
 /** @jest-environment @edge-runtime/jest-environment */
 import { NextRequest } from 'next/server';
-import middleware from '@/middleware';
+import middleware from './middleware';
 
 /**
  * Это условный BASE_URL, т.к. сервер не поднимается и сеть не используется
