@@ -25,7 +25,7 @@ export interface Executor {
 
 export type User = Client | Executor;
 
-export interface OtcRequest {
+export interface AExRequest {
   id: string;
   clientId: string;
   side: RequestSide; // клиент хочет купить или продать asset

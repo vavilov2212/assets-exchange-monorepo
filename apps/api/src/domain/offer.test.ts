@@ -1,7 +1,7 @@
 import { makeOffer, type MakeOfferInput } from './offer';
-import type { Executor, OtcRequest } from './types';
+import type { Executor, AExRequest } from './types';
 
-const request: OtcRequest = {
+const request: AExRequest = {
   id: 'req-1',
   clientId: 'client-1',
   side: 'BUY',

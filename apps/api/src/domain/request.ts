@@ -1,4 +1,4 @@
-import { type Client, type OtcRequest, type RequestSide, type Asset, DomainError } from './types';
+import { type Client, type AExRequest, type RequestSide, type Asset, DomainError } from './types';
 import { RequestStatus } from '@assets-exchange-monorepo/contracts';
 
 export interface CreateRequestInput {
@@ -11,7 +11,7 @@ export interface CreateRequestInput {
   now: Date;
 }
 
-export function createRequest(input: CreateRequestInput): OtcRequest {
+export function createRequest(input: CreateRequestInput): AExRequest {
   if (input.asset === input.quoteAsset) throw new DomainError('SAME_ASSETS');
   if (input.amount <= 0) throw new DomainError('AMOUNT_NOT_POSITIVE');
   

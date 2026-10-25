@@ -1,4 +1,4 @@
-# @assets-exchange-monorepo/api — TDD-бэкенд для OTC-площадки
+# @assets-exchange-monorepo/api — TDD-бэкенд для AEx-площадки
 
 Express 5 + TypeScript + Vitest + supertest. Node 20. Общие enum'ы и DTO — из `@assets-exchange-monorepo/contracts`.
 
@@ -19,7 +19,7 @@ npx turbo run test:watch --filter=@assets-exchange-monorepo/api
 ## Домен
 
 - **CLIENT** создаёт заявку: купить/продать `asset` за `quoteAsset`, объём `amount`.
-- **EXECUTOR** (OTC-деск) имеет параметры: поддерживаемые активы, min/max объём. Откликается (Offer) курсом `rate`.
+- **EXECUTOR** (AEx-деск) имеет параметры: поддерживаемые активы, min/max объём. Откликается (Offer) курсом `rate`.
 - Статусы заявки: `SEARCHING_EXECUTOR` («поиск исполнителя») → `IN_PROGRESS` → `COMPLETED` | `CANCELLED` (архив).
 - Регистрация организации: ФГУП запрещены.
 
@@ -64,7 +64,7 @@ npx turbo run test:watch --filter=@assets-exchange-monorepo/api
 ### Этап 4 — по желанию
 
 - [ ] Contract tests для репозитория: один набор тестов прогоняется и на InMemory, и на Postgres-реализации (Testcontainers)
-- [ ] Подключить `apps/web` к API, типизируя ответы через `OtcRequestDto` из контрактов (тогда можно потренировать RTL + MSW на компонентах)
+- [ ] Подключить `apps/web` к API, типизируя ответы через `AExRequestDto` из контрактов (тогда можно потренировать RTL + MSW на компонентах)
 
 ## Что говорить на интервью по этому проекту
 

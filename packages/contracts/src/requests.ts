@@ -14,10 +14,10 @@ export const CreateRequestBodySchema = z.object({
 export type CreateRequestBody = z.infer<typeof CreateRequestBodySchema>;
 
 /** Заявка в ответах API */
-export const OtcRequestDtoSchema = CreateRequestBodySchema.extend({
+export const AExRequestDtoSchema = CreateRequestBodySchema.extend({
   id: z.string(),
   clientId: z.string(),
   status: RequestStatusSchema,
   createdAt: z.string().datetime(),
 });
-export type OtcRequestDto = z.infer<typeof OtcRequestDtoSchema>;
+export type AExRequestDto = z.infer<typeof AExRequestDtoSchema>;

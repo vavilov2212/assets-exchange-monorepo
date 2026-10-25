@@ -1,8 +1,8 @@
-import type { Executor, Offer, OtcRequest } from './types';
+import type { Executor, Offer, AExRequest } from './types';
 
 export interface MakeOfferInput {
   id: string;
-  request: OtcRequest;
+  request: AExRequest;
   executor: Executor;
   rate: number;
 }

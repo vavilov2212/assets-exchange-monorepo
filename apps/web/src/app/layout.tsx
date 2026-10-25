@@ -4,13 +4,13 @@
 import React from 'react';
 // import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 // import { Notifications } from '@mantine/notifications';
-// import { otcCssVariablesResolver, otcTheme } from '@/styles/theme';
+// import { AExCssVariablesResolver, AExTheme } from '@/styles/theme';
 // import { Providers } from '@/store/provider';
 // import { Drawers, Modals } from '@/components';
 
 export const metadata = {
   title: 'Portal',
-  description: 'OTC admin service.',
+  description: 'AEx admin service.',
 };
 
 // eslint-disable-next-line
@@ -22,7 +22,7 @@ export default async function RootLayout({ children }: { children: any }) {
       </head>
       <body>
         {/* <Providers>
-          <MantineProvider theme={otcTheme} cssVariablesResolver={otcCssVariablesResolver}>
+          <MantineProvider theme={AExTheme} cssVariablesResolver={AExCssVariablesResolver}>
             {children}
             <Notifications />
             <Modals />
