@@ -27,7 +27,7 @@
       "@pages/*": [
         "src/_pages/*"
       ]
-    },
+    }
   },
   "include": [
     "./src",
