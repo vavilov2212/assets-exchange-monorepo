@@ -19,6 +19,16 @@ describe("LoginBodySchema", () => {
     expect(result.success && result.data.email).toBe("user@example.com");
   });
 
+  it("отклоняет email длиннее 254 символов", () => {
+    const email = `${"a".repeat(250)}@b.co`;
+    expect(LoginBodySchema.safeParse({ ...base, email }).success).toBe(false);
+  });
+
+  it("принимает email длиной ровно 254 символа", () => {
+    const email = `${"a".repeat(249)}@b.co`;
+    expect(LoginBodySchema.safeParse({ ...base, email }).success).toBe(true);
+  });
+
   it("отклоняет пустой пароль", () => {
     const result = LoginBodySchema.safeParse({
       email: "user@example.com",
