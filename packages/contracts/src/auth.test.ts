@@ -11,4 +11,9 @@ describe('LoginBodySchema', () => {
         expect(result.success && result.data.email).toBe('user@example.com');
     });
 
+    it('отклоняет пустой пароль', () => {
+        const result = LoginBodySchema.safeParse({ email: 'user@example.com', password: '' });
+        expect(result.success).toBe(false);
+    });
+
 });
