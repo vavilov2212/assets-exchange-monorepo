@@ -27,12 +27,16 @@ describe("LoginBodySchema", () => {
     expect(result.success).toBe(false);
   });
 
-  it("отклоняет слишком длинный пароль", () => {
-    const result = LoginBodySchema.safeParse({
-      email: "user@example.com",
-      password: base.password.repeat(128),
-    });
-    expect(result.success).toBe(false);
+  it("принимает пароль длиной ровно 128 символов", () => {
+    expect(
+      LoginBodySchema.safeParse({ ...base, password: "a".repeat(128) }).success,
+    ).toBe(true);
+  });
+
+  it("отклоняет пароль длиной 129 символов", () => {
+    expect(
+      LoginBodySchema.safeParse({ ...base, password: "a".repeat(129) }).success,
+    ).toBe(false);
   });
 
   it("не запоминает авторизационную сессию по умолчанию", () => {
