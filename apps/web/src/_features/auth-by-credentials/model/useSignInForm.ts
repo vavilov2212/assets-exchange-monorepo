@@ -1,7 +1,7 @@
 import { LoginBody } from '@assets-exchange-monorepo/contracts';
-import { CredentialsFormValues, toLoginBody, validateCredentials } from '@features/auth-by-credentials/model/credentials';
-import { SignInResult } from '@features/auth-by-credentials/model/ports';
 import { useForm } from '@mantine/form';
+import { type CredentialsFormValues, toLoginBody, validateCredentials } from './credentials';
+import type { SignInResult } from './ports';
 
 export const useSignInForm = (onSubmit: (body: LoginBody) => Promise<SignInResult>) => {
   const form = useForm<CredentialsFormValues>({
